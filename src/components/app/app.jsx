@@ -1,9 +1,15 @@
 import React from "react";
 import {WelcomeScreen} from "../welcom-screen/welcom-screen.jsx";
+import PropTypes from "prop-types";
 
 export const App = (props) => {
-  // eslint-disable-next-line react/prop-types
   const {settings} = props;
-  // eslint-disable-next-line react/prop-types
+
   return <WelcomeScreen errorsCount = {settings.errorsCount}/>;
+};
+
+App.propTypes = {
+  settings: PropTypes.shape({
+    errorsCount: PropTypes.number
+  })
 };
