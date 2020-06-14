@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const WelcomeScreen = (props) => {
+const WelcomeScreen = (props) => {
   const {errorsCount} = props;
 
   return <section className="welcome">
@@ -24,3 +24,5 @@ WelcomeScreen.defaultProps = {
 WelcomeScreen.propTypes = {
   errorsCount: PropTypes.number
 };
+
+export default WelcomeScreen;
