@@ -1,11 +1,13 @@
 import React from "react";
-import {WelcomeScreen} from "../welcom-screen/welcom-screen.jsx";
+import WelcomeScreen from "../welcome-screen/welcome-screen.jsx";
 import PropTypes from "prop-types";
 
-export const App = (props) => {
+const onWelcomeButtonClick = () => {};
+
+const App = (props) => {
   const {settings} = props;
 
-  return <WelcomeScreen errorsCount = {settings.errorsCount}/>;
+  return <WelcomeScreen errorsCount={settings.errorsCount} onWelcomeButtonClick={onWelcomeButtonClick}/>;
 };
 
 App.propTypes = {
@@ -13,3 +15,5 @@ App.propTypes = {
     errorsCount: PropTypes.number
   })
 };
+
+export default App;
