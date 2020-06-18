@@ -1,7 +1,15 @@
 import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
+import QuestionArtistAnswer from "../question-artist-answer/question-artist-answer.jsx";
 
-export default class QuestionArtist extends PureComponent {
+class QuestionArtist extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+    const {song, answers} = this.props.question;
+
     return <section className="game game--artist">
       <header className="game__header">
         <a className="game__back" href="#">
@@ -27,37 +35,33 @@ export default class QuestionArtist extends PureComponent {
           <div className="track">
             <button className="track__button track__button--play" type="button"></button>
             <div className="track__status">
-              <audio></audio>
+              <audio src={song.src}></audio>
             </div>
           </div>
         </div>
 
         <form className="game__artist">
-          <div className="artist">
-            <input className="artist__input visually-hidden" type="radio" name="answer" value="artist-1" id="answer-1"/>
-            <label className="artist__name" htmlFor="answer-1">
-              <img className="artist__picture" src="http://placehold.it/134x134" alt="Пелагея"/>
-                Пелагея
-            </label>
-          </div>
-
-          <div className="artist">
-            <input className="artist__input visually-hidden" type="radio" name="answer" value="artist-2" id="answer-2"/>
-            <label className="artist__name" htmlFor="answer-2">
-              <img className="artist__picture" src="http://placehold.it/134x134" alt="Пелагея"/>
-                Краснознаменная дивизия имени моей бабушки
-            </label>
-          </div>
-
-          <div className="artist">
-            <input className="artist__input visually-hidden" type="radio" name="answer" value="artist-3" id="answer-3"/>
-            <label className="artist__name" htmlFor="answer-3">
-              <img className="artist__picture" src="http://placehold.it/134x134" alt="Пелагея"/>
-                Lorde
-            </label>
-          </div>
+          {answers.map((answer) => <QuestionArtistAnswer key={answer.answer} answer={answer}/>)}
         </form>
       </section>
     </section>;
   }
 }
+
+QuestionArtist.propTypes = {
+  question: PropTypes.shape({
+    type: PropTypes.string,
+    song: PropTypes.shape({
+      answer: PropTypes.string.isRequired,
+      src: PropTypes.string
+    }),
+    answers: PropTypes.arrayOf(
+      PropTypes.shape({
+        src: PropTypes.string.isRequired,
+        answer: PropTypes.string.isRequired
+      })
+    ).isRequired
+  }).isRequired
+};
+
+export default QuestionArtist;

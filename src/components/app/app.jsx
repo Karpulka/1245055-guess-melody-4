@@ -16,10 +16,10 @@ const App = (props) => {
         <WelcomeScreen errorsCount={settings.errorsCount} onWelcomeButtonClick={onWelcomeButtonClick}/>
       </Route>
       <Route exact path="/dev-artist">
-        <QuestionArtist />
+        <QuestionArtist question={settings.questions[1]}/>
       </Route>
       <Route exact path="/dev-genre">
-        <QuestionGenre />
+        <QuestionGenre question={settings.questions[0]} />
       </Route>
     </Switch>
   </BrowserRouter>;
@@ -27,7 +27,21 @@ const App = (props) => {
 
 App.propTypes = {
   settings: PropTypes.shape({
-    errorsCount: PropTypes.number
+    errorsCount: PropTypes.number,
+    questions: PropTypes.arrayOf(PropTypes.shape({
+      type: PropTypes.string.isRequired,
+      genre: PropTypes.string,
+      song: PropTypes.shape({
+        answer: PropTypes.string.isRequired,
+        src: PropTypes.string
+      }),
+      answers: PropTypes.arrayOf(
+        PropTypes.shape({
+          src: PropTypes.string.isRequired,
+          answer: PropTypes.string.isRequired
+        })
+      ).isRequired
+    }))
   })
 };
 
