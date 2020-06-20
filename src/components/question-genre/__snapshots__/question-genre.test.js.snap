@@ -61,10 +61,13 @@ exports[`Render QuestionGenre 1`] = `
     <h2
       className="game__title"
     >
-      Выберите инди-рок треки
+      Выберите 
+      rock
+       треки
     </h2>
     <form
       className="game__tracks"
+      onSubmit={[Function]}
     >
       <div
         className="track"
@@ -76,17 +79,55 @@ exports[`Render QuestionGenre 1`] = `
         <div
           className="track__status"
         >
-          <audio />
+          <audio
+            src="111"
+          />
         </div>
         <div
           className="game__answer"
         >
           <input
+            checked={false}
+            className="game__input visually-hidden"
+            id="answer-0"
+            name="answer"
+            onChange={[Function]}
+            type="checkbox"
+            value="rock"
+          />
+          <label
+            className="game__check"
+            htmlFor="answer-0"
+          >
+            Отметить
+          </label>
+        </div>
+      </div>
+      <div
+        className="track"
+      >
+        <button
+          className="track__button track__button--play"
+          type="button"
+        />
+        <div
+          className="track__status"
+        >
+          <audio
+            src="222"
+          />
+        </div>
+        <div
+          className="game__answer"
+        >
+          <input
+            checked={false}
             className="game__input visually-hidden"
             id="answer-1"
             name="answer"
+            onChange={[Function]}
             type="checkbox"
-            value="answer-1"
+            value="blues"
           />
           <label
             className="game__check"
@@ -106,51 +147,25 @@ exports[`Render QuestionGenre 1`] = `
         <div
           className="track__status"
         >
-          <audio />
+          <audio
+            src="333"
+          />
         </div>
         <div
           className="game__answer"
         >
           <input
+            checked={false}
             className="game__input visually-hidden"
             id="answer-2"
             name="answer"
+            onChange={[Function]}
             type="checkbox"
-            value="answer-1"
+            value="jazz"
           />
           <label
             className="game__check"
             htmlFor="answer-2"
-          >
-            Отметить
-          </label>
-        </div>
-      </div>
-      <div
-        className="track"
-      >
-        <button
-          className="track__button track__button--pause"
-          type="button"
-        />
-        <div
-          className="track__status"
-        >
-          <audio />
-        </div>
-        <div
-          className="game__answer"
-        >
-          <input
-            className="game__input visually-hidden"
-            id="answer-3"
-            name="answer"
-            type="checkbox"
-            value="answer-1"
-          />
-          <label
-            className="game__check"
-            htmlFor="answer-3"
           >
             Отметить
           </label>
@@ -166,21 +181,25 @@ exports[`Render QuestionGenre 1`] = `
         <div
           className="track__status"
         >
-          <audio />
+          <audio
+            src="444"
+          />
         </div>
         <div
           className="game__answer"
         >
           <input
+            checked={false}
             className="game__input visually-hidden"
-            id="answer-4"
+            id="answer-3"
             name="answer"
+            onChange={[Function]}
             type="checkbox"
-            value="answer-1"
+            value="rock"
           />
           <label
             className="game__check"
-            htmlFor="answer-4"
+            htmlFor="answer-3"
           >
             Отметить
           </label>

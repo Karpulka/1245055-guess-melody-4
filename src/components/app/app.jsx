@@ -7,6 +7,7 @@ import QuestionGenre from "../question-genre/question-genre.jsx";
 
 const handleWelcomeButtonClick = () => {};
 const handleChangeAnswer = () => {};
+const handleAnswerSubmit = () => {};
 
 const App = (props) => {
   const {settings} = props;
@@ -20,7 +21,7 @@ const App = (props) => {
         <QuestionArtist question={settings.questions[1]} onChangeAnswer={handleChangeAnswer}/>
       </Route>
       <Route exact path="/dev-genre">
-        <QuestionGenre question={settings.questions[0]} />
+        <QuestionGenre question={settings.questions[0]} onAnswerSubmit={handleAnswerSubmit}/>
       </Route>
     </Switch>
   </BrowserRouter>;
