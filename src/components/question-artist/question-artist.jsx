@@ -19,7 +19,7 @@ class QuestionArtist extends PureComponent {
 
         <svg xmlns="http://www.w3.org/2000/svg" className="timer" viewBox="0 0 780 780">
           <circle className="timer__line" cx="390" cy="390" r="370"
-            style={{filter: 'url(#blur)', transform: 'rotate(-90deg) scaleY(-1)', transformOrigin: 'center'}}/>
+            style={{filter: `url(#blur)`, transform: `rotate(-90deg) scaleY(-1)`, transformOrigin: `center`}}/>
         </svg>
 
         <div className="game__mistakes">
@@ -41,7 +41,12 @@ class QuestionArtist extends PureComponent {
         </div>
 
         <form className="game__artist">
-          {answers.map((answer) => <QuestionArtistAnswer key={answer.answer} answer={answer}/>)}
+          {answers.map((answer) => <QuestionArtistAnswer
+            key={answer.answer}
+            answer={answer}
+            onChangeAnswer={this.props.onChangeAnswer}
+            question={this.props.question}
+          />)}
         </form>
       </section>
     </section>;
@@ -56,12 +61,13 @@ QuestionArtist.propTypes = {
       src: PropTypes.string
     }),
     answers: PropTypes.arrayOf(
-      PropTypes.shape({
-        src: PropTypes.string.isRequired,
-        answer: PropTypes.string.isRequired
-      })
+        PropTypes.shape({
+          src: PropTypes.string.isRequired,
+          answer: PropTypes.string.isRequired
+        })
     ).isRequired
-  }).isRequired
+  }).isRequired,
+  onChangeAnswer: PropTypes.func.isRequired
 };
 
 export default QuestionArtist;

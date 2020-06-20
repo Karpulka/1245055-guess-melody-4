@@ -5,7 +5,8 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import QuestionArtist from "../question-artist/question-artist.jsx";
 import QuestionGenre from "../question-genre/question-genre.jsx";
 
-const onWelcomeButtonClick = () => {};
+const handleWelcomeButtonClick = () => {};
+const handleChangeAnswer = () => {};
 
 const App = (props) => {
   const {settings} = props;
@@ -13,10 +14,10 @@ const App = (props) => {
   return <BrowserRouter>
     <Switch>
       <Route exact path="/">
-        <WelcomeScreen errorsCount={settings.errorsCount} onWelcomeButtonClick={onWelcomeButtonClick}/>
+        <WelcomeScreen errorsCount={settings.errorsCount} onWelcomeButtonClick={handleWelcomeButtonClick}/>
       </Route>
       <Route exact path="/dev-artist">
-        <QuestionArtist question={settings.questions[1]}/>
+        <QuestionArtist question={settings.questions[1]} onChangeAnswer={handleChangeAnswer}/>
       </Route>
       <Route exact path="/dev-genre">
         <QuestionGenre question={settings.questions[0]} />
@@ -36,10 +37,10 @@ App.propTypes = {
         src: PropTypes.string
       }),
       answers: PropTypes.arrayOf(
-        PropTypes.shape({
-          src: PropTypes.string.isRequired,
-          answer: PropTypes.string.isRequired
-        })
+          PropTypes.shape({
+            src: PropTypes.string.isRequired,
+            answer: PropTypes.string.isRequired
+          })
       ).isRequired
     }))
   })

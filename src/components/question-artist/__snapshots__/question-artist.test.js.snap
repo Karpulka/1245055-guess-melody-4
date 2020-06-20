@@ -32,7 +32,13 @@ exports[`Render QuestionArtist 1`] = `
         cx="390"
         cy="390"
         r="370"
-        style="filter: url(#blur); transform: rotate(-90deg) scaleY(-1); transform-origin: center"
+        style={
+          Object {
+            "filter": "url(#blur)",
+            "transform": "rotate(-90deg) scaleY(-1)",
+            "transformOrigin": "center",
+          }
+        }
       />
     </svg>
     <div
@@ -70,7 +76,9 @@ exports[`Render QuestionArtist 1`] = `
         <div
           className="track__status"
         >
-          <audio />
+          <audio
+            src=""
+          />
         </div>
       </div>
     </div>
@@ -82,21 +90,22 @@ exports[`Render QuestionArtist 1`] = `
       >
         <input
           className="artist__input visually-hidden"
-          id="answer-1"
+          id="answer"
           name="answer"
+          onChange={[Function]}
           type="radio"
-          value="artist-1"
+          value="one"
         />
         <label
           className="artist__name"
-          htmlFor="answer-1"
+          htmlFor="answer"
         >
           <img
-            alt="Пелагея"
+            alt="one"
             className="artist__picture"
-            src="http://placehold.it/134x134"
+            src="pic-one"
           />
-          Пелагея
+          one
         </label>
       </div>
       <div
@@ -104,21 +113,22 @@ exports[`Render QuestionArtist 1`] = `
       >
         <input
           className="artist__input visually-hidden"
-          id="answer-2"
+          id="answer"
           name="answer"
+          onChange={[Function]}
           type="radio"
-          value="artist-2"
+          value="two"
         />
         <label
           className="artist__name"
-          htmlFor="answer-2"
+          htmlFor="answer"
         >
           <img
-            alt="Пелагея"
+            alt="two"
             className="artist__picture"
-            src="http://placehold.it/134x134"
+            src="pic-two"
           />
-          Краснознаменная дивизия имени моей бабушки
+          two
         </label>
       </div>
       <div
@@ -126,21 +136,22 @@ exports[`Render QuestionArtist 1`] = `
       >
         <input
           className="artist__input visually-hidden"
-          id="answer-3"
+          id="answer"
           name="answer"
+          onChange={[Function]}
           type="radio"
-          value="artist-3"
+          value="three"
         />
         <label
           className="artist__name"
-          htmlFor="answer-3"
+          htmlFor="answer"
         >
           <img
-            alt="Пелагея"
+            alt="three"
             className="artist__picture"
-            src="http://placehold.it/134x134"
+            src="pic-three"
           />
-          Lorde
+          three
         </label>
       </div>
     </form>
