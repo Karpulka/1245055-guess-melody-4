@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render QuestionArtistAnswer component 1`] = `
+<div
+  className="artist"
+>
+  <input
+    className="artist__input visually-hidden"
+    id="answer"
+    name="answer"
+    onChange={[Function]}
+    type="radio"
+    value="one"
+  />
+  <label
+    className="artist__name"
+    htmlFor="answer"
+  >
+    <img
+      alt="one"
+      className="artist__picture"
+      src="pic-one"
+    />
+    one
+  </label>
+</div>
+`;
