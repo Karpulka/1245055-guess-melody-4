@@ -24,7 +24,7 @@ const handleAnswerSubmit = () => {};
 
 it(`Render QuestionGenre`, () => {
   const tree = renderer
-    .create(<QuestionGenre question={question} onAnswerSubmit={handleAnswerSubmit}/>, {
+    .create(<QuestionGenre question={question} onAnswerSubmit={handleAnswerSubmit} renderPlayer={() => {}}/>, {
       createNodeMock: () => {
         return {};
       }

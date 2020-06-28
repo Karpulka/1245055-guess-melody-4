@@ -37,6 +37,7 @@ it(`Click Send UserAnswer`, () => {
       <QuestionGenre
         question={question}
         onAnswerSubmit={handelAnswerSubmit}
+        renderPlayer={() => {}}
       />
   );
 
