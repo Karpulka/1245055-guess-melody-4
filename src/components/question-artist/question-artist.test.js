@@ -28,7 +28,11 @@ const handleChangeAnswer = () => {};
 
 it(`Render QuestionArtist`, () => {
   const tree = renderer
-    .create(<QuestionArtist question={question} onChangeAnswer={handleChangeAnswer}/>)
+    .create(<QuestionArtist question={question} onChangeAnswer={handleChangeAnswer}/>, {
+      createNodeMock: () => {
+        return {};
+      }
+    })
     .toJSON();
 
   expect(tree).toMatchSnapshot();
