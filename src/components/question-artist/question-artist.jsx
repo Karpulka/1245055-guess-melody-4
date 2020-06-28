@@ -1,14 +1,20 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import QuestionArtistAnswer from "../question-artist-answer/question-artist-answer.jsx";
+import AudioPlayer from "../audio-player/audio-player.jsx";
 
 class QuestionArtist extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      isPlaying: true
+    };
   }
 
   render() {
     const {song, answers} = this.props.question;
+    const {isPlaying} = this.state;
 
     return <section className="game game--artist">
       <header className="game__header">
@@ -33,10 +39,15 @@ class QuestionArtist extends PureComponent {
         <h2 className="game__title">Кто исполняет эту песню?</h2>
         <div className="game__track">
           <div className="track">
-            <button className="track__button track__button--play" type="button"></button>
-            <div className="track__status">
-              <audio src={song.src}></audio>
-            </div>
+            <AudioPlayer
+              src={song.src}
+              isPlaying={isPlaying}
+              onPlayButtonClick={() => {
+                this.setState({
+                  isPlaying: !isPlaying
+                });
+              }}
+            />
           </div>
         </div>
 
