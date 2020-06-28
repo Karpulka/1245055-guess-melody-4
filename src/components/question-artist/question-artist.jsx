@@ -2,9 +2,8 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import QuestionArtistAnswer from "../question-artist-answer/question-artist-answer.jsx";
 
-class QuestionArtist extends PureComponent {
-  render() {
-    const {question: {song, answers}, renderPlayer} = this.props;
+const QuestionArtist = (props) => {
+    const {question: {song, answers}, renderPlayer} = props;
 
     return <section className="game game--artist">
       <header className="game__header">
@@ -43,8 +42,7 @@ class QuestionArtist extends PureComponent {
         </form>
       </section>
     </section>;
-  }
-}
+};
 
 QuestionArtist.propTypes = {
   question: PropTypes.shape({
