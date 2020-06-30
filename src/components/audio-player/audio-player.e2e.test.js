@@ -8,16 +8,16 @@ Enzyme.configure({
 });
 
 const src = `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`;
-const isPlaying = true;
 
-it(`Test Play / Pause track`, () => {
+it(`Test Pause track`, () => {
   const handlePlayButtonClick = jest.fn();
+  window.HTMLMediaElement.prototype.play = () => {};
 
   const audioElement = mount(
       <AudioPlayer
         src={src}
         onPlayButtonClick={handlePlayButtonClick}
-        isPlaying={isPlaying}
+        isPlaying={true}
       />
   );
 
@@ -25,4 +25,24 @@ it(`Test Play / Pause track`, () => {
   button.props().onClick();
 
   expect(handlePlayButtonClick.mock.calls.length).toEqual(1);
+  expect(button.hasClass(`track__button--pause`)).toBe(true);
+});
+
+it(`Test Play track`, () => {
+  const handlePlayButtonClick = jest.fn();
+  window.HTMLMediaElement.prototype.pause = () => {};
+
+  const audioElement = mount(
+      <AudioPlayer
+        src={src}
+        onPlayButtonClick={handlePlayButtonClick}
+        isPlaying={false}
+      />
+  );
+
+  const button = audioElement.find(`button.track__button`);
+  button.props().onClick();
+
+  expect(handlePlayButtonClick.mock.calls.length).toEqual(1);
+  expect(button.hasClass(`track__button--play`)).toBe(true);
 });
