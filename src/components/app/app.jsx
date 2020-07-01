@@ -5,9 +5,12 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import QuestionArtist from "../question-artist/question-artist.jsx";
 import QuestionGenre from "../question-genre/question-genre.jsx";
 import {GameType} from "../../constants";
+import withAudioPlayer from "../../hocs/with-audio-player/with-audio-player.jsx";
 
 const handleChangeAnswer = () => {};
 const handleAnswerSubmit = () => {};
+const GenreQuestionScreenWrapped = withAudioPlayer(QuestionGenre);
+const ArtistQuestionScreenWrapped = withAudioPlayer(QuestionArtist);
 
 class App extends PureComponent {
   constructor(props) {
@@ -27,10 +30,10 @@ class App extends PureComponent {
           {this._renderGameScreen()}
         </Route>
         <Route exact path="/dev-artist">
-          <QuestionArtist question={settings.questions[1]} onChangeAnswer={handleChangeAnswer}/>
+          <ArtistQuestionScreenWrapped question={settings.questions[1]} onChangeAnswer={handleChangeAnswer}/>
         </Route>
         <Route exact path="/dev-genre">
-          <QuestionGenre question={settings.questions[0]} onAnswerSubmit={handleAnswerSubmit}/>
+          <GenreQuestionScreenWrapped question={settings.questions[0]} onAnswerSubmit={handleAnswerSubmit}/>
         </Route>
       </Switch>
     </BrowserRouter>;
@@ -51,7 +54,7 @@ class App extends PureComponent {
       switch (question.type) {
         case GameType.ARTIST:
           return (
-            <QuestionArtist question={question} onChangeAnswer={() => {
+            <ArtistQuestionScreenWrapped question={question} onChangeAnswer={() => {
               this.setState((prevState) => ({
                 step: prevState.step + 1
               }));
@@ -59,7 +62,7 @@ class App extends PureComponent {
           );
         case GameType.GENRE:
           return (
-            <QuestionGenre
+            <GenreQuestionScreenWrapped
               question={question}
               onAnswerSubmit={() => {
                 this.setState((prevState) => ({
