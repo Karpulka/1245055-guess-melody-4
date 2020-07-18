@@ -1,6 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import QuestionGenre from "./question-genre";
+import {Provider} from "react-redux";
+import configStore from "redux-mock-store";
+
+const mockStore = configStore([]);
 
 const question = {
   type: `genre`,
@@ -23,8 +27,14 @@ const question = {
 const handleAnswerSubmit = () => {};
 
 it(`Render QuestionGenre`, () => {
+  const store = mockStore({
+    errorCount: 0
+  });
+
   const tree = renderer
-    .create(<QuestionGenre question={question} onAnswerSubmit={handleAnswerSubmit} renderPlayer={() => {}}/>, {
+    .create(<Provider store={store}>
+      <QuestionGenre question={question} onAnswerSubmit={handleAnswerSubmit} renderPlayer={() => {}}/>
+    </Provider>, {
       createNodeMock: () => {
         return {};
       }
