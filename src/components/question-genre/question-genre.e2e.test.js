@@ -31,6 +31,7 @@ const formSubmitEvent = {
 
 it(`Click Send UserAnswer`, () => {
   const handelAnswerSubmit = jest.fn((...args) => [...args]);
+  const setAnswer = jest.fn((...args) => [...args]);
   const userAnswers = [false, false, true, false];
 
   const questionGenre = shallow(
@@ -38,6 +39,8 @@ it(`Click Send UserAnswer`, () => {
         question={question}
         onAnswerSubmit={handelAnswerSubmit}
         renderPlayer={() => {}}
+        answers={userAnswers}
+        setAnswer={setAnswer}
       />
   );
 
@@ -45,8 +48,12 @@ it(`Click Send UserAnswer`, () => {
   const inputThree = questionGenre.find(`input`).at(2);
 
   inputThree.simulate(`change`, {target: {checked: true}});
-  form.simulate(`submit`, formSubmitEvent);
+  expect(setAnswer).toHaveBeenCalledTimes(1);
 
+  expect(setAnswer.mock.calls[0][0]).toBe(2);
+  expect(setAnswer.mock.calls[0][1]).toBe(true);
+
+  form.simulate(`submit`, formSubmitEvent);
   expect(handelAnswerSubmit).toHaveBeenCalledTimes(1);
 
   expect(handelAnswerSubmit.mock.calls[0][0]).toMatchObject(question);

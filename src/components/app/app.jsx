@@ -8,9 +8,11 @@ import {GameType} from "../../constants";
 import withAudioPlayer from "../../hocs/with-audio-player/with-audio-player.jsx";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer";
+import withGenreQuestionAnswer from "../../hocs/with-genre-question-answer/with-genre-question-answer";
 
-const GenreQuestionScreenWrapped = withAudioPlayer(QuestionGenre);
 const ArtistQuestionScreenWrapped = withAudioPlayer(QuestionArtist);
+const QuestionGenreComponent = withGenreQuestionAnswer(QuestionGenre);
+const GenreQuestionScreenWrapped = withAudioPlayer(QuestionGenreComponent);
 
 class App extends PureComponent {
   constructor(props) {

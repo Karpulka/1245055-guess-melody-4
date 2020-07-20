@@ -6,6 +6,8 @@ import configStore from "redux-mock-store";
 
 const mockStore = configStore([]);
 
+const answers = [false, true, true, false];
+
 const question = {
   type: `genre`,
   genre: `rock`,
@@ -33,7 +35,13 @@ it(`Render QuestionGenre`, () => {
 
   const tree = renderer
     .create(<Provider store={store}>
-      <QuestionGenre question={question} onAnswerSubmit={handleAnswerSubmit} renderPlayer={() => {}}/>
+      <QuestionGenre
+        question={question}
+        onAnswerSubmit={handleAnswerSubmit}
+        renderPlayer={() => {}}
+        answers={answers}
+        setAnswer={() => {}}
+      />
     </Provider>, {
       createNodeMock: () => {
         return {};
