@@ -1,5 +1,6 @@
 import React, {PureComponent} from "react";
 import AudioPlayer from "../../components/audio-player/audio-player.jsx";
+import withAudio from "../with-audio/with-audio";
 
 const withAudioPlayer = (Component) => {
   class WithAudioPlayer extends PureComponent {
@@ -13,11 +14,12 @@ const withAudioPlayer = (Component) => {
 
     render() {
       const {activePlayer} = this.state;
+      const AudioPlayerComponent = withAudio(AudioPlayer);
 
       return <Component
         {...this.props}
         renderPlayer={(src, id) => {
-          return <AudioPlayer
+          return <AudioPlayerComponent
             src={src}
             isPlaying={id === activePlayer}
             onPlayButtonClick={() => {

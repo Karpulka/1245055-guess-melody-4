@@ -18,7 +18,9 @@ it(`Test Pause track`, () => {
         src={src}
         onPlayButtonClick={handlePlayButtonClick}
         isPlaying={true}
-      />
+        isLoading={true}
+        changeIsPlaying={() => {}}
+      ><audio /></AudioPlayer>
   );
 
   const button = audioElement.find(`button.track__button`);
@@ -37,7 +39,9 @@ it(`Test Play track`, () => {
         src={src}
         onPlayButtonClick={handlePlayButtonClick}
         isPlaying={false}
-      />
+        isLoading={true}
+        changeIsPlaying={() => {}}
+      ><audio /></AudioPlayer>
   );
 
   const button = audioElement.find(`button.track__button`);
