@@ -11,7 +11,8 @@ export const defaultState = {
 
 export const ActionType = {
   ADD_ERROR: `ADD_ERROR`,
-  NEXT_QUESTION: `NEXT_QUESTION`
+  NEXT_QUESTION: `NEXT_QUESTION`,
+  RELOAD_GAME: `RELOAD_GAME`
 };
 
 const isArtistAnswerCorrect = (question, userAnswer) => {
@@ -46,7 +47,12 @@ export const ActionCreator = {
       type: ActionType.ADD_ERROR,
       payload: answerIsCorrect ? 0 : 1
     };
-  }
+  },
+
+  reloadGame: () => ({
+    type: ActionType.RELOAD_GAME,
+    payload: 0
+  })
 };
 
 export const reducer = (state = defaultState, action) => {
@@ -72,6 +78,10 @@ export const reducer = (state = defaultState, action) => {
       return extend(state, {
         step: nextStep
       });
+
+    case ActionType.RELOAD_GAME:
+      return extend(defaultState, {step: action.payload});
+
     default:
       return state;
   }
