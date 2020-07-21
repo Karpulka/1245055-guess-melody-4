@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const WelcomeScreen = (props) => {
-  const {errorsCount, onWelcomeButtonClick} = props;
+  const {maxErrorsCount, onWelcomeButtonClick} = props;
 
   return <section className="welcome">
     <div className="welcome__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"/></div>
@@ -11,7 +11,7 @@ const WelcomeScreen = (props) => {
     <p className="welcome__text">Правила просты:</p>
     <ul className="welcome__rules-list">
       <li>Нужно ответить на все вопросы.</li>
-      <li>Можно допустить {errorsCount} ошибки.</li>
+      <li>Можно допустить {maxErrorsCount} ошибки.</li>
     </ul>
     <p className="welcome__text">Удачи!</p>
   </section>;
@@ -22,7 +22,7 @@ WelcomeScreen.defaultProps = {
 };
 
 WelcomeScreen.propTypes = {
-  errorsCount: PropTypes.number,
+  maxErrorsCount: PropTypes.number,
   onWelcomeButtonClick: PropTypes.func.isRequired
 };
 

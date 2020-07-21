@@ -6,7 +6,7 @@ exports[`Render QuestionArtistAnswer component 1`] = `
 >
   <input
     className="artist__input visually-hidden"
-    id="answer"
+    id="answer-0"
     name="answer"
     onChange={[Function]}
     type="radio"
@@ -14,7 +14,7 @@ exports[`Render QuestionArtistAnswer component 1`] = `
   />
   <label
     className="artist__name"
-    htmlFor="answer"
+    htmlFor="answer-0"
   >
     <img
       alt="one"

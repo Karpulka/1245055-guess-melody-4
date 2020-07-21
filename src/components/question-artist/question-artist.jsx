@@ -18,11 +18,12 @@ const QuestionArtist = (props) => {
       </div>
 
       <form className="game__artist">
-        {answers.map((answer) => <QuestionArtistAnswer
+        {answers.map((answer, i) => <QuestionArtistAnswer
           key={answer.answer}
           answer={answer}
           onChangeAnswer={props.onChangeAnswer}
           question={props.question}
+          id={i}
         />)}
       </form>
     </section>

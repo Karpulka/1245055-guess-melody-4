@@ -9,20 +9,14 @@ import withAudioPlayer from "../../hocs/with-audio-player/with-audio-player.jsx"
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer";
 import withGenreQuestionAnswer from "../../hocs/with-genre-question-answer/with-genre-question-answer";
+import Success from "../success/success.jsx";
+import Fail from "../fail/fail.jsx";
 
 const ArtistQuestionScreenWrapped = withAudioPlayer(QuestionArtist);
 const QuestionGenreComponent = withGenreQuestionAnswer(QuestionGenre);
 const GenreQuestionScreenWrapped = withAudioPlayer(QuestionGenreComponent);
 
 class App extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      step: -1
-    };
-  }
-
   render() {
     const {questions} = this.props;
 
@@ -42,11 +36,19 @@ class App extends PureComponent {
   }
 
   _renderGameScreen() {
-    const {maxErrorCount: errorsCount, questions, step, handleWelcomeButtonClick, handleChangeAnswer} = this.props;
+    const {maxErrorCount, errorCount, questions, step, handleWelcomeButtonClick, handleChangeAnswer} = this.props;
     const question = questions[step];
 
-    if (step === -1 || step >= questions.length) {
-      return <WelcomeScreen errorsCount={errorsCount} onWelcomeButtonClick={handleWelcomeButtonClick}/>;
+    if (step === -1) {
+      return <WelcomeScreen maxErrorsCount={maxErrorCount} onWelcomeButtonClick={handleWelcomeButtonClick}/>;
+    }
+
+    if (step >= questions.length && errorCount < questions.length) {
+      return <Success errorsCount={errorCount} questionCount={questions.length} />;
+    }
+
+    if (errorCount >= questions.length) {
+      return <Fail />;
     }
 
     if (question) {
@@ -69,8 +71,13 @@ class App extends PureComponent {
   }
 }
 
+App.defaultProps = {
+  errorCount: 0
+};
+
 App.propTypes = {
   maxErrorCount: PropTypes.number.isRequired,
+  errorCount: PropTypes.number,
   step: PropTypes.number.isRequired,
   questions: PropTypes.arrayOf(PropTypes.shape({
     type: PropTypes.string.isRequired,
@@ -93,6 +100,7 @@ App.propTypes = {
 const mapStateToPops = (state) => ({
   step: state.step,
   maxErrorCount: state.maxErrorCount,
+  errorCount: state.errorCount,
   questions: state.questions
 });
 

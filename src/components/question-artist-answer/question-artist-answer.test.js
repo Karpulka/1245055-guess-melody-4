@@ -36,7 +36,9 @@ it(`Render QuestionArtistAnswer component`, () => {
     .create(<QuestionArtistAnswer
       answer={answer}
       onChangeAnswer={handleChangeAnswer}
-      question={question}/>)
+      question={question}
+      id={0}
+    />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

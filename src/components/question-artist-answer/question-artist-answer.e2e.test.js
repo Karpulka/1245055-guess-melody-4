@@ -45,6 +45,7 @@ it(`Test user answer callback`, () => {
         answer={userAnswer}
         onChangeAnswer={handleChangeAnswer}
         question={question}
+        id={0}
       />
   );
 
